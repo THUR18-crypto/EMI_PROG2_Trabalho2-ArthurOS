@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Times e Jogadores de Vôlei</title>
+    <link rel="stylesheet" href="../css/TrabalhoFinal.css">
+</head>
+<body>
+
+    <h1>Catálogo de Times e Jogadores de Vôlei</h1>
+
+    <!-- Seção de cadastro de times -->
+    <section id="formTime">
+        <h2>Cadastrar Time</h2>
+            Nome do Time:<br>
+            <input type="text" id="nomeTime">
+            <br>
+
+           Ano de Fundação:<Br>
+            <input type="number" min="1900" max="2025" id="AnoFundacao">
+            <br>
+
+            Estado: <br>
+            <select id="estadoTime">
+                <option value="">Selecione</option>
+                <option value="RJ">RJ</option>
+                <option value="SP">SP</option>
+                <option value="MG">MG</option>
+                <option value="RS">RS</option>
+                <option value="PR">PR</option>
+                <option value="SC">SC</option>
+            </select><br>
+
+           Categoria:<br>
+            <select id="categoria">
+                <option value="">Selecione</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Misto">Misto</option>
+            </select><br>
+
+            <button type="submit">Cadastrar Time</button>
+        </form>
+
+        <h3>Times Cadastrados:</h3>
+        <ul id="listaTimes">
+            <!-- Lista de times cadastrados -->
+        </ul>
+    </section>
+
+    <!-- Seção de cadastro de jogadores -->
+    <section id="formJogador">
+        <h2>Cadastrar Jogador</h2>
+            Nome do Jogador:<br>
+            <input type="text" id="nomeJogador">
+            <br>
+
+            Gênero:<br>
+            <select id="generoJogador">
+                <option value="">Selecione</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Outro">Outro</option>
+            </select>
+            <br>
+
+           Idade:<br>
+            <input type="number" id="idadeJogador">
+            <br>
+
+           Posição:<br>
+            <select id="posicaoJogador">
+                <option value="">Selecione</option>
+                <option value="Levantador">Levantador</option>
+                <option value="Oposto">Oposto</option>
+                <option value="Central">Central</option>
+                <option value="Ponteiro">Ponteiro</option>
+                <option value="Líbero">Líbero</option>
+            </select>
+            <br>
+
+            Altura do Jogador(cm):<br>
+            <input type="number" min="165" max="300" id="alturaJogador">
+            <br>
+
+            Nacionalidade:<br>
+            <select id="nacionalidadeJogador">
+                <option value="">Selecione</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Brasil">Brasil</option>
+                <option value="Itália">Itália</option>
+                <option value="França">França</option>
+                <option value="Japão">Japão</option>
+                <option value="Polônia">Polônia</option>
+            </select>
+            <br>
+
+            Mão Dominante:<br>
+            <select id="maoDomJogador">
+                <option value="">Selecione</option>
+                <option value="maoDireita">Destro</option>
+                <option value="maoEsquerda">Canhoto</option>
+                <option value="Ambidestro">Ambidestro</option>
+            </select>
+            <br>
+
+            Time:<br>
+            <select id="timeJogador">
+                <option value="">Selecione um time</option>
+            </select>
+            <br>
+
+            <button id="btnAddJogador" type="submit">Cadastrar Jogador</button>
+        </form>
+
+        <h3>Jogadores Cadastrados:</h3>
+        <ul id="ulLista">
+            <!-- Lista de jogadores cadastrados -->
+        </ul>
+    </section>
+
+    <script src="../js/ClassesFinal.js"></script>
+    <script src="../js/TrabalhoFinal.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+:root {
+    --cor-primaria: #0077b6;
+    --cor-secundaria: #00b4d8;
+    --cor-destaque: #ffd60a;
+    --cor-fundo: #f5f7fa;
+    --texto-claro: #fff;
+    --texto-escuro: #1a1a1a;
+    --borda-suave: 8px;
+    --sombra-card: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--texto-escuro);
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* ==========================================
+     TÍTULO PRINCIPAL
+  ========================================== */
+  h1 {
+    background-color: var(--cor-primaria);
+    color: var(--texto-claro);
+    text-align: center;
+    padding: 1.5rem 0;
+    margin: 0 0 2rem 0;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    box-shadow: var(--sombra-card);
+  }
+  
+  /* ==========================================
+     SEÇÕES (Formulários)
+  ========================================== */
+  section {
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: var(--borda-suave);
+    box-shadow: var(--sombra-card);
+  }
+  
+  section h2 {
+    color: var(--cor-primaria);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  section h3 {
+    margin-top: 2rem;
+    color: var(--cor-secundaria);
+  }
+  
+  /* ==========================================
+     CAMPOS DE FORMULÁRIO
+  ========================================== */
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 0.6rem;
+    margin: 0.4rem 0 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: var(--borda-suave);
+    font-size: 1rem;
+    transition: border 0.2s ease;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: var(--cor-primaria);
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 119, 182, 0.3);
+  }
+  
+  /* ==========================================
+     BOTÕES
+  ========================================== */
+  button {
+    display: block;
+    width: 100%;
+    background-color: var(--cor-secundaria);
+    color: var(--texto-claro);
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: var(--borda-suave);
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: var(--cor-primaria);
+  }
+  
+  /* ==========================================
+     LISTAS DE ITENS (Times e Jogadores)
+  ========================================== */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  
+  ul li {
+    background: var(--cor-fundo);
+    padding: 0.8rem 1rem;
+    border-left: 4px solid var(--cor-primaria);
+    border-radius: var(--borda-suave);
+    margin-bottom: 0.6rem;
+    box-shadow: var(--sombra-card);
+    transition: transform 0.2s ease;
+  }
+  
+  ul li:hover {
+    transform: translateX(5px);
+  }
+  
+  /* ==========================================
+     RESPONSIVIDADE
+  ========================================== */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 1.6rem;
+    }
+  
+    section {
+      padding: 1.2rem;
+    }
+  
+    button {
+      font-size: 0.95rem;
+    }
+  }
