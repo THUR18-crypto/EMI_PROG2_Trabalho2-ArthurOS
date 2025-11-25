@@ -7,10 +7,10 @@ class Time{
         this.anoFundacao = anoFundacao;
     }
     toString(){
-        return `${this.nome}, Estado: ${this.estado} - Categoria: ${this.categoria} - : ${this.anoFundacao}`
+        return `${this.nome}`
     }
     exibirDados(){
-        return super.toString()+` Ano Fundação: ${this.anoFundacao}`
+        return super.toString()+`, Estado: ${this.estado} - Categoria: ${this.categoria} - Ano Fundação: ${this.anoFundacao}`
     }
 }
 class Jogador{
