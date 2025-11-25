@@ -10,6 +10,7 @@ listaTimes.push(t3);
 
 window.onload = function() {
     CarregarTimes();
+    Carregar();
 };
 
 
@@ -21,8 +22,8 @@ function CarregarTimes() {
     for(let i = 0; i<listaTimes.length; i++){
         let disc = listaTimes[i];
         let opt = document.createElement("option");
-        opt.value = i;   // Prog2, BD, SO
-        opt.innerHTML = disc.toString();      // Programação 2, Banco de Dados, ...
+        opt.value = i;  
+        opt.innerHTML = disc.toString();     
         select.appendChild(opt);
     }
 }
@@ -31,8 +32,24 @@ function CarregarTimes() {
 // Adiciona um listener para a ação do botão de id btnAddTarefa. 
 // A função 'cadastrarTarefa' será chamada.
 document.getElementById("btnAddJogador").addEventListener("click", cadastrarJogador);
-
+document.getElementById("btnAddTime").addEventListener("click", cadastrarTime);
 // --- Funções ---
+
+function cadastrarTime(evento){
+    evento.preventDefault();
+
+    
+    let nomeTime = document.getElementById('nomeTime').value;
+    let estadoTime = document.getElementById('estadoTime').value;
+    let catTime = document.getElementById('categoria').value;
+    let anoFundacao = document.getElementById('AnoFundacao').value;
+
+    let NovoTime = new Time(nomeTime, estadoTime, catTime, anoFundacao)
+    listaTimes.push(NovoTime)
+
+    CarregarTimes();
+}
+
 
 function cadastrarJogador(evento) {
     // #TODO: 4. Implemente a lógica para cadastrar uma tarefa.
@@ -70,19 +87,23 @@ function Carregar() {
     // #TODO: 5. Implemente a lógica para mostrar as tarefas na tela.
     // a. Pegue o elemento 'ulTarefas' do HTML.
     const ulJogadores = document.getElementById("ulLista");
+    const ulTimes = document.getElementById("ulTeam");
 
 
-    // b. Limpe o conteúdo atual da lista (innerHTML = "").
     ulJogadores.innerHTML = "";
-    
-    // c. Faça um laço (for) para percorrer o array 'listaTarefas'.
+    ulTimes.innerHTML = "";
+
     for (let i = 0; i < listaJogadores.length; i++) {
-        // d. Para cada objeto 'tarefa' no array:
-        //    i. Crie um elemento 'li' (document.createElement).
         let liAtleta = document.createElement("li");
         
-        //    ii. Defina o innerHTML do 'li' com o resultado do método 'toString()' da tarefa.
         liAtleta.innerHTML = listaJogadores[i];
+    }
+
+        for (let i = 0; i < listaTimes.length; i++) {
+            let liTime = document.createElement("li");
+            
+            liTime.innerHTML = listaTimes[i];
+        
 
         //    iii. Crie um botão de remover.
         let btnRemover = document.createElement("button");

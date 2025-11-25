@@ -7,10 +7,10 @@ class Time{
         this.anoFundacao = anoFundacao;
     }
     toString(){
-        return `${this.nome}, Estado: ${this.estado} - Categoria: ${this.categoria} - : ${this.anoFundacao}`
+        return ` ${this.nome}`
     }
     exibirDados(){
-        return super.toString()+` Ano Fundação: ${this.anoFundacao}`
+        return super.toString()+`, Estado: ${this.estado} - Categoria: ${this.categoria} - : ${this.anoFundacao}`
     }
 }
 class Jogador{
@@ -25,7 +25,7 @@ class Jogador{
         this.time = Time;
     }
     toString(){
-        return `${this.nome}(${this.altura}) Posição: ${this.posicao} Nacinalidade: ${this.nacionalidade} - Time: ${this.time}`
+        return `${this.nome}(${this.altura}) Posição: ${this.posicao} - Nacionalidade: ${this.nacionalidade} - Time: ${this.time}`
     }
     exibirDados(){
         return super.toString()+` Mão Dominante: ${this.maoDom}, Gênero: ${this.genero}`
