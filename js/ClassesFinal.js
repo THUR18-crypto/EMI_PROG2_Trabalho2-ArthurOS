@@ -23,6 +23,7 @@ class Jogador{
         this.nacionalidade = nacionalidade;
         this.maoDom = maoDominante;
         this.time = Time;
+        //adicionar se time for nulo, retornar "sem time"
     }
     toString(){
         return `${this.nome}(${this.altura}) Posição: ${this.posicao} Nacinalidade: ${this.nacionalidade} - Time: ${this.time}`
