@@ -1,14 +1,40 @@
-let listaJogadores = []
+let listaTimes = JSON.parse(localStorage.getItem("lista-times")) || [];
 
-let listaTimes = []
-let t1 = new Time("Minas Tênis Clube","MG","Masculino","1935");
-let t2 = new Time("Sada Cruzeiro","MG","Masculino","2006");
-let t3 = new Time("Joinville","SC","Masculino","2022");
-listaTimes.push(t1);
-listaTimes.push(t2);
-listaTimes.push(t3);
+if (listaTimes.length > 0) {
+    listaTimes = listaTimes.map(t => new Time(t.nome, t.estado, t.categoria, t.anoFundacao));
+} else {
+    let t1 = new Time("Minas Tênis Clube", "MG", "Masculino", "1935");
+    let t2 = new Time("Sada Cruzeiro", "MG", "Masculino", "2006");
+    let t3 = new Time("Joinville Vôlei", "SC", "Masculino", "2022");
+    listaTimes.push(t1);
+    listaTimes.push(t2);
+    listaTimes.push(t3);
+    localStorage.setItem("lista-times", JSON.stringify(listaTimes));
+}
 
-window.onload = function() {
+let listaJogadores = JSON.parse(localStorage.getItem("lista-jogadores")) || []
+if (listaJogadores.length > 0) {
+    listaJogadores = listaJogadores.map(j => new Jogador(
+        j.nome,
+        j.idade,
+        j.genero,
+        j.posicao,
+        j.altura,
+        j.nacionalidade,
+        j.maoDominante,
+        j.Time )
+        // Encontra o objeto 'Time' correspondente na listaTimes já re-hidratada
+        // Isso é crucial, pois j.timeJogador também é um objeto genérico
+        // Recria a instância de Jogador
+        // Ajuste os parâmetros se a ordem no construtor for diferente
+        // Passa a instância de Time, e não o objeto genérico
+        );
+    };
+
+
+
+
+window.onload = function () {
     CarregarTimes();
     Carregar();
 };
@@ -19,13 +45,23 @@ function CarregarTimes() {
     const select = document.getElementById("timeJogador");
     select.innerHTML = ""; // limpa opções antigas
 
-    for(let i = 0; i<listaTimes.length; i++){
+    for (let i = 0; i < listaTimes.length; i++) {
         let disc = listaTimes[i];
         let opt = document.createElement("option");
         opt.value = i;  
         opt.innerHTML = disc.toString();     
         select.appendChild(opt);
     }
+
+    const ulTime = document.getElementById("listaTimes");
+    ulTime.innerHTML = "";
+    for (let i = 0; i < listaTimes.length; i++) {
+        let time = listaTimes[i];
+        let li = document.createElement("li");
+        li.innerHTML = time.toString();
+        ulTime.appendChild(li);
+    }
+    //fazer a mesma coisa com o jogador
 }
 
 // --- Event Listeners ---
@@ -62,25 +98,21 @@ function cadastrarJogador(evento) {
     let idade = document.getElementById("idadeJogador").value;
     let posicao = document.getElementById("posicaoJogador").value;
     let altura = document.getElementById("alturaJogador").value;
-    let nacionalidade = document.getElementById("nacionalidadeJogador")
-    let maoDominante = document.getElementById("maoDomJogador")
+    let nacionalidade = document.getElementById("nacionalidadeJogador").value
+    let maoDominante = document.getElementById("maoDomJogador").value
 
     let time_index = parseInt(document.getElementById("timeJogador").value);
     let timeJogador = listaTimes[time_index];
-   
-        // 2 . criar objeto do tipo TarefaEscolar
-        let Atleta = new Jogador(nome, genero, idade, posicao, altura, nacionalidade, maoDominante,timeJogador);
+
+    let Atleta = new Jogador(nome, genero, idade, posicao, altura, nacionalidade, maoDominante, timeJogador);
 
 
-    
 
-    // b. Adicione o objeto criado ao array 'listaTarefas'.
     listaJogadores.push(Atleta);
+    localStorage.setItem("lista-jogadores", JSON.stringify(listaJogadores));
 
-    // c. Chame a função 'carregarTarefas()' para atualizar a lista na tela.
+
     Carregar();
-    // Limpando o formulário usando 'reset()'.
-    document.getElementById("formTarefa").reset();
 }
 
 function Carregar() {
@@ -108,25 +140,26 @@ function Carregar() {
         //    iii. Crie um botão de remover.
         let btnRemover = document.createElement("button");
         btnRemover.innerHTML = "Remover";
-        
+
         //    iv. Adicione um atributo 'onclick' ao botão que chame a função 'removerTarefa(i)'.
         btnRemover.setAttribute("onclick", `removerJogador(${i})`);
 
         //    v. Adicione o botão ao 'li' e o 'li' à lista 'ul'.
-        liAtleta.appendChild(btnRemover); 
+        liAtleta.appendChild(btnRemover);
 
 
         // Desafio para dia 18-09 --> Incluir item na lista específica: Escolar ou Genérica
-            ulJogadores.appendChild(liAtleta);
+        ulJogadores.appendChild(liAtleta);
 
     }
+    
 }
-
-function removerTarefa(indice) {
+function removerJogador(indice) {
     // #TODO: 6. Implemente a lógica para remover uma tarefa.
     // a. Use o método 'splice' para remover o item do array 'listaTarefas' no índice recebido.
     listaJogadores.splice(indice, 1);
+    localStorage.setItem("lista-jogadores", JSON.stringify(listaJogadores));
     // b. Chame a função 'carregarTarefas()' para atualizar a tela.
     Carregar();
-    
+
 }
